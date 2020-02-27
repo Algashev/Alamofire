@@ -235,6 +235,7 @@ open class SessionManager {
 
         do {
             originalRequest = try URLRequest(url: url, method: method, headers: headers)
+            originalRequest?.timeoutInterval = 10 // 60 default by default. It is too much
             let encodedURLRequest = try encoding.encode(originalRequest!, with: parameters)
             return request(encodedURLRequest)
         } catch {
